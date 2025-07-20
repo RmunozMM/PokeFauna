@@ -1,0 +1,102 @@
+.
+├── dataset_animales_chile
+│   ├── dataset_animales_chile
+│   │   ├── Actinopterygii
+│   │   ├── Amphibia
+│   │   ├── Arachnida
+│   │   ├── Aves
+│   │   ├── Insecta
+│   │   ├── Mammalia
+│   │   └── Reptilia
+│   ├── dataset_animales_chile_completo.csv
+│   └── scrapping.ipynb
+├── deteccion.ipynb
+├── estructura_proyecto.txt
+├── POC
+│   ├── Archivo.zip
+│   ├── assets
+│   │   ├── css
+│   │   ├── img
+│   │   └── js
+│   ├── dataset
+│   │   ├── blue
+│   │   ├── bulbasaur
+│   │   ├── mew
+│   │   ├── pikachu
+│   │   ├── thor
+│   │   └── unknown
+│   ├── index.html
+│   ├── pokedex.py
+│   └── test
+│       ├── bulba.jpg
+│       ├── bulbatest.jpg
+│       ├── charmander.jpg
+│       ├── IMG_1433.JPG
+│       ├── test_pika.jpg
+│       └── test.jpg
+├── testeo
+│   ├── test_1.jpg
+│   ├── test_2.jpg
+│   ├── test_3.jpeg
+│   ├── test_4.jpeg
+│   ├── test_5.jpg
+│   └── test_6.jpg
+└── webapp
+    ├── backups
+    │   ├── 1752008401_orig.jpg
+    │   ├── 1752008425_orig.jpg
+    │   ├── 1752008446_orig.jpg
+    │   ├── 1752008547_orig.jpg
+    │   ├── 1752008558_orig.jpg
+    │   ├── 1752008758_orig.jpg
+    │   ├── 1752008772_orig.jpg
+    │   ├── 1752008787_orig.jpg
+    │   ├── 1752008792_orig.jpg
+    │   ├── 1752008795_orig.jpg
+    │   ├── 1752008808_orig.jpg
+    │   ├── 1752008903_orig.jpg
+    │   ├── 1752008938_orig.jpg
+    │   ├── 1752009014_orig.jpg
+    │   ├── 1752009104_orig.jpg
+    │   ├── 1752009118_orig.jpg
+    │   ├── 1752009120_orig.jpg
+    │   ├── 1752009224_orig.jpg
+    │   ├── 1752009329_orig.jpg
+    │   ├── backup_streamlit_original_1752005741.jpg
+    │   ├── backup_streamlit_original_1752005780.jpg
+    │   ├── backup_streamlit_original_1752007907.jpg
+    │   ├── backup_streamlit_original_1752007930.jpg
+    │   ├── backup_streamlit_original_1752007934.jpg
+    │   ├── backup_streamlit_original_1752007937.jpg
+    │   ├── backup_streamlit_original_1752007941.jpg
+    │   ├── backup_streamlit_original_1752007945.jpg
+    │   ├── backup_streamlit_original_1752007947.jpg
+    │   ├── backup_streamlit_original_1752007951.jpg
+    │   ├── backup_streamlit_original_1752007955.jpg
+    │   ├── backup_streamlit_original_1752007959.jpg
+    │   ├── backup_streamlit_original_1752007960.jpg
+    │   ├── backup_streamlit_original_1752007974.jpg
+    │   ├── backup_streamlit_original_1752007981.jpg
+    │   ├── backup_streamlit_original_1752007989.jpg
+    │   ├── backup_streamlit_original_1752007992.jpg
+    │   ├── backup_streamlit_original_1752007994.jpg
+    │   ├── backup_streamlit_original_1752008000.jpg
+    │   ├── backup_streamlit_original_1752008002.jpg
+    │   ├── backup_streamlit_original_1752008003.jpg
+    │   ├── backup_streamlit_original_1752008008.jpg
+    │   ├── backup_streamlit_original_1752008140.jpg
+    │   ├── backup_streamlit_original_1752008373.jpg
+    │   ├── original_1752009615.jpg
+    │   ├── streamlit_1752009783.jpg
+    │   ├── streamlit_1752010463.jpg
+    │   ├── streamlit_1752011028.jpg
+    │   ├── streamlit_1752011044.jpg
+    │   └── streamlit_1752011335.jpg
+    ├── best_pokedex_model.keras
+    ├── clases_pokedex.json
+    ├── genera_modelo.py
+    ├── pokedex_model.h5
+    ├── pokedex_model.keras
+    └── pokedex_webapp.py
+
+26 directories, 74 files

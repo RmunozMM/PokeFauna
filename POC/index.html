@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PokeFauna</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Favicon estándar (para navegadores) -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/img/logo-pokefauna-chile.png"
+    />
+    <!-- Apple Touch Icon (para pantalla de inicio en iOS) -->
+    <link
+      rel="apple-touch-icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/img/logo-pokefauna-chile.png"
+    />
+
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/personal.css" />
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body>
+    <div class="pokedex-container">
+      <div class="pokedex">
+        <div class="pdx-left-panel">
+          <div class="pdx-controls">
+            <div class="pdx-action-buttons">
+              <div class="action-btn" id="btnA" title="Geoposicionar">
+                <!-- Location icon for Geoposicionar -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"
+                  />
+                </svg>
+                <span class="btn-label">GPS</span>
+              </div>
+              <div class="action-btn" id="btnB" title="Registrar Especie">
+                <!-- Checkmark/Save icon for Registrar -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path
+                    d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"
+                  />
+                </svg>
+                <span class="btn-label">Reg.</span>
+              </div>
+              <div class="action-btn" id="btnC" title="Mis Especies">
+                <!-- List/Pokedex icon for Mis Especies -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path
+                    d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zm0-8h14V7H7v2z"
+                  />
+                </svg>
+                <span class="btn-label">Lista</span>
+              </div>
+              <div class="action-btn" id="btnD" title="Inicio">
+                <!-- Home icon for Home -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                  <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+                </svg>
+                <span class="btn-label">Home</span>
+              </div>
+            </div>
+            <div class="pdx-main-buttons">
+              <div class="btn" id="btnBuscarNombre">Buscar por Nombre</div>
+              <div class="btn" id="btnCamara">Abrir cámara</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pdx-right-panel">
+          <div class="pdx-screen-area">
+            <div class="pdx-screen-border"></div>
+            <div class="pdx-screen" id="screen">
+              <!-- Initial interactive buttons will be loaded here by JS -->
+            </div>
+          </div>
+          <!-- New location for PokeFauna Chile text inside the Pokedex -->
+          <span class="pdx-screen-label">PokeFauna Chile</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Original footer-text restored with image -->
+    <div class="footer-text">
+      <img
+        src="assets/img/logo-pokefauna-chile.png"
+        alt="Logo PokeFauna Chile"
+      />
+    </div>
+
+    <!-- Orientation message, hidden by default -->
+    <div class="orientation-message" id="orientationMessage">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M16 7h-3V3h-2v4H8l4 4 4-4zM6 17h3v4h2v-4h3l-4-4-4 4zm-3 2v-2h2V5H3V3h2v2h14V3h2v2h-2v12h2v2h-2v2h-2v-2H5v2H3v-2z"
+        />
+      </svg>
+      <p>
+        Por favor, gira tu dispositivo a modo horizontal (paisaje) para usar
+        PokeFauna.
+      </p>
+    </div>
+  </body>
+</html>

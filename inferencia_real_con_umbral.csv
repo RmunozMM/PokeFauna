@@ -1,0 +1,7 @@
+archivo,predicción,confianza,top3
+test_3.jpeg,Mammalia,0.9093189239501953,Mammalia:0.91; Insecta:0.06; Reptilia:0.02
+test_2.jpg,Mammalia,0.7261196970939636,Mammalia:0.73; Insecta:0.18; Reptilia:0.05
+test_4.jpeg,Desconocido,0.4526749849319458,Aves:0.45; Reptilia:0.38; Amphibia:0.13
+test_1.jpg,Aves,0.9867849946022034,Aves:0.99; Mammalia:0.01; Insecta:0.01
+test_5.jpg,Mammalia,0.9600905776023865,Mammalia:0.96; Aves:0.04; Insecta:0.00
+test_6.jpg,Mammalia,0.8747303485870361,Mammalia:0.87; Insecta:0.09; Reptilia:0.03

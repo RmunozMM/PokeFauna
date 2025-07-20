@@ -1,0 +1,794 @@
+:root {
+  --pdx-red: #cc0000;
+  --pdx-dark-red: #a30000;
+  --pdx-black: #1e1e1e;
+  --pdx-gray: #333;
+  --pdx-light-gray: #ccc;
+  --pdx-white: #f5f5f5;
+  --pdx-blue-light: #6dd5ed; /* Light blue for screen */
+  --pdx-blue-dark: #2193b0; /* Darker blue for accents */
+  --font-base: 0.9rem;
+  --font-large: 1.1rem;
+  --font-title: 1.5rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #222; /* Dark background for the outside */
+  display: flex;
+  flex-direction: column; /* Allow content to stack vertically */
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: "Roboto", sans-serif;
+  color: var(--pdx-black);
+}
+
+.pokedex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1; /* Allow it to take available vertical space */
+}
+
+.pokedex {
+  width: 95%;
+  max-width: 850px; /* Max width for iPhone-like landscape */
+  height: 400px; /* Fixed height for landscape view on larger screens */
+  background: var(--pdx-red);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  border: 4px solid var(--pdx-dark-red);
+  position: relative;
+  display: flex; /* Use flexbox for left and right panels */
+}
+
+.pdx-left-panel {
+  flex: 0 0 160px; /* Fixed width for left panel */
+  background: var(--pdx-red);
+  border-right: 3px solid var(--pdx-gray);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute content vertically */
+  padding: 15px;
+  position: relative;
+}
+
+.pdx-controls {
+  display: flex;
+  flex-direction: column; /* Stack action buttons and main buttons */
+  align-items: center;
+  gap: 20px; /* Space between action buttons and main buttons */
+  flex-grow: 1; /* Allow controls to take available vertical space */
+  justify-content: center; /* Center the groups of buttons */
+}
+
+.pdx-action-buttons {
+  display: flex;
+  flex-direction: column; /* Stack action buttons vertically */
+  gap: 10px;
+  width: 100%; /* Take full width */
+  align-items: center; /* Center buttons horizontally */
+}
+
+.action-btn {
+  width: 80px; /* Wider to accommodate text */
+  height: 80px; /* Taller to accommodate text */
+  border-radius: 50%;
+  background: var(--pdx-white);
+  border: 3px solid var(--pdx-gray);
+  display: flex;
+  flex-direction: column; /* Arrange icon and text vertically */
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: var(--pdx-black);
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.1s ease-in-out, background 0.1s ease-in-out;
+  padding-top: 5px; /* Adjust padding to center content */
+}
+
+.action-btn:active {
+  transform: translateY(2px);
+  background: var(--pdx-light-gray);
+}
+
+.action-btn svg {
+  width: 35px; /* Larger icon */
+  height: 35px;
+  fill: var(--pdx-black); /* Icon color */
+  margin-bottom: 2px; /* Space between icon and text */
+}
+
+.btn-label {
+  font-size: 0.8rem; /* Larger font size for the label */
+  font-family: "Roboto", sans-serif; /* Use Roboto for clarity */
+  font-weight: bold;
+  color: var(--pdx-black);
+  line-height: 1; /* Compact line height */
+}
+
+.pdx-main-buttons {
+  display: flex;
+  flex-direction: column; /* Stack main buttons vertically */
+  gap: 10px;
+  width: 100%; /* Take full width */
+  align-items: center; /* Center buttons horizontally */
+  margin-top: auto; /* Push to the bottom of the left panel */
+  padding-top: 15px; /* Space above main buttons */
+  border-top: 3px solid var(--pdx-gray); /* Separator */
+}
+
+.btn {
+  width: 90%; /* Make main buttons take more width */
+  padding: 12px 0;
+  background: var(--pdx-blue-dark);
+  color: var(--pdx-white);
+  border: 3px solid var(--pdx-gray);
+  border-radius: 8px;
+  font-size: var(--font-large);
+  font-weight: bold;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn:active {
+  background: var(--pdx-blue-light);
+  color: var(--pdx-black);
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Disabled state for buttons */
+.btn.disabled,
+.action-btn.disabled,
+.camera-btn.disabled,
+.search-button.disabled,
+.report-button.disabled {
+  /* Added .report-button */
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.pdx-right-panel {
+  flex: 1; /* Take remaining space */
+  background: var(--pdx-red);
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  align-items: center; /* Center children horizontally in column flexbox */
+  justify-content: space-between; /* Distribute space to push screen up and label down */
+}
+
+.pdx-screen-area {
+  background: var(--pdx-black);
+  border: 5px solid var(--pdx-gray);
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex-grow: 1; /* Make screen area fill available height */
+  overflow: hidden;
+  padding: 10px; /* Inner padding for content */
+  width: 100%; /* Ensure it takes full width of its parent */
+}
+
+.pdx-screen-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 3px solid var(--pdx-blue-dark); /* Visor effect */
+  border-radius: 6px;
+  pointer-events: none; /* Allow clicks through */
+}
+
+.pdx-screen {
+  flex-grow: 1; /* Allows content to fill space */
+  background: var(--pdx-blue-light); /* Screen background */
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pdx-black);
+  font-size: var(--font-base);
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Content specific styles */
+.species-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: var(--pdx-blue-dark); /* Background for info */
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.species-img {
+  width: 100%;
+  height: 50%; /* Image takes half height in portrait */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--pdx-black); /* Placeholder background */
+}
+.species-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensure full image is visible */
+  display: block;
+}
+.species-info {
+  width: 100%;
+  height: 50%; /* Info takes half height in portrait */
+  color: var(--pdx-white);
+  padding: 12px;
+  overflow-y: auto;
+  font-size: var(--font-base);
+  line-height: 1.4;
+}
+.species-info h2 {
+  margin: 0 0 8px;
+  font-size: var(--font-title);
+  font-family: "Press Start 2P", cursive;
+  color: var(--pdx-blue-light);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+.species-info p {
+  margin-bottom: 5px;
+}
+.species-info strong {
+  color: var(--pdx-blue-light);
+}
+
+/* Initial welcome text */
+.welcome-text {
+  color: var(--pdx-black);
+  font-size: var(--font-large);
+  font-weight: bold;
+  padding: 20px;
+}
+
+/* Screen initial buttons */
+.screen-initial-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 20px; /* Space between buttons */
+  background: var(--pdx-blue-dark);
+  border-radius: 4px;
+}
+
+.screen-initial-buttons .btn {
+  width: 80%; /* Make buttons take more width */
+  padding: 15px 0;
+  font-size: 1.2rem; /* Larger font for these main buttons */
+  background: var(--pdx-red); /* Use red for main screen buttons */
+  border-color: var(--pdx-dark-red);
+  color: var(--pdx-white);
+}
+
+.screen-initial-buttons .btn:active {
+  background: var(--pdx-dark-red);
+  color: var(--pdx-white);
+}
+
+/* Camera controls within the screen */
+.camera-controls {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  z-index: 10; /* Ensure it's above the video */
+}
+
+.camera-btn {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: 2px solid var(--pdx-blue-light);
+  border-radius: 5px;
+  padding: 8px 15px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.camera-btn:active {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(1px);
+}
+
+/* Search input and button styles */
+.search-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background: var(--pdx-blue-dark);
+  border-radius: 4px;
+  color: var(--pdx-white);
+}
+
+.search-input-container p {
+  margin-bottom: 15px;
+  font-size: var(--font-large);
+  font-weight: bold;
+}
+
+.search-input {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid var(--pdx-gray);
+  border-radius: 5px;
+  font-size: var(--font-base);
+  background: var(--pdx-white);
+  color: var(--pdx-black);
+  text-align: center;
+}
+
+/* Style for error on search input */
+.search-input.error-input {
+  border-color: red;
+  box-shadow: 0 0 5px red;
+}
+
+.search-button {
+  background: var(--pdx-dark-red);
+  color: var(--pdx-white);
+  border: 3px solid var(--pdx-gray);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: var(--font-large);
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.search-button:active {
+  background: var(--pdx-red);
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Species List specific styles */
+.species-list-main-container {
+  width: 100%;
+  height: 100%;
+  background: var(--pdx-blue-dark);
+  border-radius: 4px;
+  overflow-y: auto;
+  padding: 10px;
+  color: var(--pdx-white);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Space between species cards */
+}
+
+.species-list-main-container h2 {
+  margin: 0 0 10px;
+  font-size: var(--font-title);
+  font-family: "Press Start 2P", cursive;
+  color: var(--pdx-blue-light);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.species-list-card {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.species-list-card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  border: 3px solid var(--pdx-blue-light);
+}
+
+.species-list-card h3 {
+  margin: 0 0 5px;
+  font-size: 1.1rem;
+  color: var(--pdx-blue-light);
+  font-family: "Press Start 2P", cursive;
+}
+
+.species-list-card p {
+  margin: 2px 0;
+  font-size: 0.8rem;
+}
+
+.species-list-card strong {
+  color: var(--pdx-blue-light);
+}
+
+.back-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}
+
+.back-button {
+  background: var(--pdx-dark-red);
+  color: var(--pdx-white);
+  border: 3px solid var(--pdx-gray);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: var(--font-large);
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.back-button:active {
+  background: var(--pdx-red);
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer text (outside the Pokedex) */
+.footer-text {
+  color: var(--pdx-white); /* Base color for the text */
+  font-family: "Press Start 2P", cursive; /* Use the pixel font */
+  font-size: 0.8rem;
+  margin-top: 20px;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+  display: flex; /* Make it a flex container */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 300px; /* Give it a fixed height */
+}
+
+.footer-text img {
+  max-width: 100%; /* Ensure image fits within the footer */
+  max-height: 100%; /* Ensure image fits within the footer */
+  object-fit: contain; /* Maintain aspect ratio */
+}
+
+/* Style for the "PokeFauna Chile" label inside the Pokedex */
+.pdx-screen-label {
+  display: block; /* Make it a block element to take full width and allow text-align */
+  width: 100%; /* Ensure it takes full width of its parent */
+  text-align: center; /* Center the text horizontally */
+  color: #555555; /* A darker gray, closer to the background for a subtle effect */
+  font-family: "Press Start 2P", cursive; /* Use the pixel font */
+  font-size: 0.7rem; /* Slightly smaller font size for this label */
+  margin-top: 10px; /* Space from the screen above */
+  text-shadow: none; /* No shadow for a flatter, subtle look */
+  letter-spacing: 0.5px; /* Reduced letter spacing for a compact look */
+  text-transform: uppercase; /* Ensure it's uppercase */
+  padding-bottom: 5px; /* Small padding at the bottom */
+}
+
+/* Styles for messages in the screen */
+.message-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: var(--font-large);
+  font-weight: bold;
+  text-align: center;
+  padding: 20px;
+  border-radius: 4px; /* Slightly rounded corners for messages */
+  background: var(--pdx-blue-dark); /* Default background for messages */
+}
+
+.message-info {
+  color: var(--pdx-white);
+}
+
+.message-success {
+  color: #aaffaa; /* Light green for success */
+}
+
+.message-error {
+  color: #ffaaaa; /* Light red for error */
+}
+
+/* NEW: Styles for Report Sighting Form */
+.report-sighting-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align content to the top */
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  background: var(--pdx-blue-dark);
+  border-radius: 4px;
+  color: var(--pdx-white);
+  overflow-y: auto; /* Enable scrolling for longer forms */
+}
+
+.report-sighting-container h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: var(--font-title);
+  font-family: "Press Start 2P", cursive;
+  color: var(--pdx-blue-light);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.report-input-group {
+  width: 90%; /* Adjust width for inputs */
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align labels to the left */
+}
+
+.report-input-group label {
+  font-size: var(--font-base);
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: var(--pdx-blue-light);
+}
+
+.report-input,
+.report-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid var(--pdx-gray);
+  border-radius: 5px;
+  font-size: var(--font-base);
+  background: var(--pdx-white);
+  color: var(--pdx-black);
+  text-align: left; /* Align text to the left */
+}
+
+.report-textarea {
+  resize: vertical; /* Allow vertical resizing */
+  min-height: 60px;
+}
+
+/* Error style for report inputs */
+.report-input.error-input,
+.report-textarea.error-input {
+  border-color: red;
+  box-shadow: 0 0 5px red;
+}
+
+.report-button {
+  background: var(--pdx-dark-red);
+  color: var(--pdx-white);
+  border: 3px solid var(--pdx-gray);
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: var(--font-large);
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s, transform 0.1s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-top: 10px; /* Space above the button */
+  width: 90%; /* Match input width */
+}
+
+.report-button:active {
+  background: var(--pdx-red);
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Ensure back-button in report screen is also styled */
+.report-sighting-container .back-button {
+  margin-top: 15px; /* Space between save and back button */
+  width: 90%; /* Match input width */
+}
+
+/* Responsive en pantallas muy pequeñas (Portrait) */
+@media (max-width: 380px) and (orientation: portrait) {
+  .pokedex {
+    display: none; /* Hide pokedex in portrait mode */
+  }
+  .footer-text {
+    display: none; /* Hide footer text in portrait mode */
+  }
+  .orientation-message {
+    display: flex; /* Show message in portrait mode */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #222;
+    color: var(
+      --pdx-white
+    ) !important; /* Changed to white and added !important */
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 20px;
+    z-index: 9999;
+    font-family: "Roboto", sans-serif;
+  }
+  .orientation-message svg {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+    fill: var(--pdx-white);
+  }
+}
+
+/* Responsive en pantallas muy pequeñas (Landscape) */
+@media (max-width: 850px) and (orientation: landscape) {
+  .pokedex {
+    width: 98%; /* Take almost full width in landscape on small devices */
+    height: 95vh; /* Take most of the viewport height */
+    border-radius: 10px; /* Keep some rounded corners */
+    margin: 10px auto; /* Center with margin */
+  }
+  .pdx-left-panel {
+    flex: 0 0 120px; /* Wider fixed width for left panel in landscape */
+    padding: 8px; /* Reduced padding */
+  }
+  .pdx-controls {
+    gap: 10px; /* Reduced gap between action and main button groups */
+  }
+  .pdx-action-buttons {
+    flex-direction: column; /* Keep action buttons stacked vertically */
+    justify-content: center;
+    align-items: center;
+    gap: 5px; /* Small gap between action buttons */
+    width: 100%; /* Ensure it takes full width of its container */
+  }
+  .action-btn {
+    width: 70px; /* Larger for better tap target, but still fits two per row */
+    height: 70px;
+    padding-top: 3px; /* Adjusted padding */
+  }
+  .action-btn svg {
+    width: 30px; /* Larger icons */
+    height: 30px;
+  }
+  .btn-label {
+    font-size: 0.7rem; /* Larger font for labels */
+  }
+  .pdx-main-buttons {
+    flex-direction: column; /* Force main buttons to stack vertically */
+    gap: 8px; /* Smaller gap for main buttons */
+    margin-top: 8px; /* Reduced margin */
+    padding-top: 10px; /* Reduced padding */
+    border-top: 1px solid var(--pdx-gray); /* Thinner border */
+    width: 95%; /* Take more of the width */
+  }
+  .btn {
+    width: 100%; /* Make buttons take full width of their container */
+    font-size: 0.8rem; /* Smaller font for main buttons */
+    padding: 6px 0; /* Reduced padding */
+  }
+  .pdx-right-panel {
+    padding: 8px; /* Reduced padding */
+  }
+  .pdx-screen-area {
+    padding: 5px; /* Reduced padding */
+  }
+  .species-list-card img {
+    width: 60px; /* Smaller images in list */
+    height: 60px;
+  }
+  .species-list-card h3 {
+    font-size: 0.75rem; /* Smaller font for list titles */
+  }
+  .species-list-card p {
+    font-size: 0.6rem; /* Smaller font for list text */
+  }
+  .orientation-message {
+    display: none; /* Hide message in landscape mode */
+  }
+}
+
+/* General desktop/larger landscape adjustments */
+@media (min-width: 851px) {
+  .pokedex {
+    width: 850px; /* Fixed max width for larger screens */
+    height: 400px; /* Fixed height */
+    margin: 20px auto; /* Center with margin */
+  }
+  .pdx-left-panel {
+    flex: 0 0 160px; /* Original width */
+    padding: 15px; /* Original padding */
+  }
+  .pdx-controls {
+    gap: 20px; /* Original gap */
+  }
+  .pdx-action-buttons {
+    flex-direction: column; /* Stack action buttons vertically */
+    gap: 10px; /* Original gap */
+  }
+  .action-btn {
+    width: 80px; /* Original size */
+    height: 80px;
+    padding-top: 5px;
+  }
+  .action-btn svg {
+    width: 35px; /* Original size */
+    height: 35px;
+  }
+  .btn-label {
+    font-size: 0.8rem; /* Original font size */
+  }
+  .pdx-main-buttons {
+    flex-direction: column; /* Stack main buttons vertically */
+    gap: 10px; /* Original gap */
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 3px solid var(--pdx-gray);
+  }
+  .btn {
+    width: 90%; /* Original width */
+    font-size: var(--font-large); /* Original font size */
+    padding: 12px 0; /* Original padding */
+  }
+  .pdx-right-panel {
+    padding: 15px; /* Original padding */
+  }
+  .pdx-screen-area {
+    padding: 10px; /* Original padding */
+  }
+  .species-list-card img {
+    width: 100px; /* Original size */
+    height: 100px;
+  }
+  .species-list-card h3 {
+    font-size: 1.1rem; /* Original font size */
+  }
+  .species-list-card p {
+    font-size: 0.8rem; /* Original font size */
+  }
+  .orientation-message {
+    display: none; /* Always hidden on desktop */
+  }
+}
